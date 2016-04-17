@@ -4,8 +4,9 @@ function Bullet:init(startX,startY,deltaX,deltaY)
     -- you can accept and set parameters here
     self.x = startX
     self.y = startY
-    self.dx = deltaX
-    self.dy = deltaY
+    self.bSpeed = 20
+    self.dx = deltaX * self.bSpeed
+    self.dy = deltaY * self.bSpeed
     self.bulletSize = 5
 end
 

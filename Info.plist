@@ -6,10 +6,10 @@
 	<string>Unknown</string>
 	<key>Buffer Order</key>
 	<array>
+		<string>Main</string>
 		<string>Bullet</string>
 		<string>Hero</string>
 		<string>Joystick</string>
-		<string>Main</string>
 	</array>
 	<key>Description</key>
 	<string>No description available</string>

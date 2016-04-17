@@ -10,8 +10,9 @@ function setup()
     
     hero = Hero(WIDTH/2,HEIGHT/2)
     
-    parameter.watch("screenX")
-    parameter.watch("screenY")
+    parameter.watch("hero.x")
+    parameter.watch("hero.y")
+    
 end
 
 function draw()
