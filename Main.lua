@@ -1,26 +1,27 @@
 --displayMode(FULLSCREEN)
 
 function setup()
-
-    --joystick table
-    jsTable = {}
-    
     --bullet table
     bTable = {}
     
     hero = Hero(WIDTH/2,HEIGHT/2)
     
-    parameter.watch("hero.x")
-    parameter.watch("hero.y")
+    moveStick = Joystick("move")
+    shootStick = Joystick("shoot")
+    
+    parameter.watch("moveStick.dx")
+    parameter.watch("moveStick.dy")
     
 end
 
 function draw()
     background(40, 40, 50)
 
-    --draw all the joysticks
-    for jsIndex,jsInstance in pairs(jsTable) do
-        jsInstance:draw()
+    if moveStick.visible == true then
+        moveStick:draw()
+    end
+    if shootStick.visible == true then
+        shootStick:draw()
     end
     
     fill(255)
@@ -37,28 +38,25 @@ function draw()
 end
 
 function touched(touch)
-    if touch.state==BEGAN then
-        if touch.x<WIDTH/2 then
-            for a,b in pairs(jsTable) do
-                if b.type=="move" then
-                    return  -- limit 1 move joystick
-                end
-            end
-            --create move joysticks
-            table.insert(jsTable,Joystick(touch.x,touch.y,touch.id,"move"))
-        else
-            for a,b in pairs(jsTable) do
-                if b.type=="shoot" then
-                    return  -- limit 1 move joystick
-                end
-            end
-            --create shoot joysticks
-            table.insert(jsTable,Joystick(touch.x,touch.y,touch.id,"shoot"))    -- allow multiple shoot
+    --moveStick:touched(touch)
+    --shootStick:touched(touch)
+    
+    if touch.x < WIDTH/2 then
+        moveStick:touched(touch)
+        if touch.state == BEGAN then
+            moveStick.visible = true
+        elseif touch.state == ENDED then
+            moveStick.visible = false
+        end
+    elseif touch.x > WIDTH/2 then
+        shootStick:touched(touch)
+        if touch.state == BEGAN then
+            shootStick.visible = true
+            --hero:startFiring()
+        elseif touch.state == ENDED then
+            shootStick.visible = false
+            --hero:stopFiring()
         end
     end
     
-    --pass along the touch information to the joysticks
-    for jsIndex,jsInstance in pairs(jsTable) do
-        jsInstance:touched(touch)
-    end
 end
