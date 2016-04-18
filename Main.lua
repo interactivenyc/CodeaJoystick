@@ -11,6 +11,7 @@ function setup()
     
     parameter.watch("moveStick.dx")
     parameter.watch("moveStick.dy")
+    parameter.watch("moveStick.angle")
     
 end
 

@@ -8,6 +8,7 @@ function Joystick:init(type)
     self.touchY=0
     self.dx=0
     self.dy=0
+    self.angle = 0;
     
     self.c=20
     self.visible = false
@@ -25,12 +26,19 @@ function Joystick:draw()
     
     self.dx=direction.x
     self.dy=direction.y 
-
+    
     if self.type=="move" then
-        if math.abs(direction.x) > 0 then
-            hero.x=hero.x+direction.x*3
-            hero.y=hero.y+direction.y*3
-        end
+        --convert the vector to angle, and add snapping
+        self.angle = math.atan2(self.dx, self.dy) -- radians
+        self.angle = self.angle * 180/math.pi -- degrees
+        self.angle = self.angle - (self.angle % 15) -- snap to 15 degree increments
+        
+        --convert the new angle back to a vec2
+        self.angle = self.angle * math.pi/180 -- convert back to radians
+        self.dx = math.sin(self.angle)
+        self.dy = math.cos(self.angle)
+        
+        
     end
 
     if self.type=="shoot" then
@@ -47,6 +55,12 @@ function Joystick:touched(touch)
     self.touchY=touch.y
     
     if touch.state==BEGAN then
+        self.x = touch.x
+        self.y = touch.y
+        self.dx=0
+        self.dy=0
+    end
+    if touch.state==ENDED then
         self.x = touch.x
         self.y = touch.y
         self.dx=0

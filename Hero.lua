@@ -7,7 +7,12 @@ function Hero:init(x,y)
 end
 
 function Hero:draw()
-    -- Codea does not automatically call this method
+
+    if math.abs(moveStick.dx) > 0 then
+        self.x=self.x+moveStick.dx*3
+        self.y=self.y+moveStick.dy*3
+    end
+    
     sprite("Platformer Art:Guy Standing",self.x,self.y,25)
 end
 
