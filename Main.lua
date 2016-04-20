@@ -12,20 +12,17 @@ function setup()
     parameter.watch("moveStick.angle")
     parameter.watch("hero.imageIndex")
     parameter.watch("hero.imageName")
+    parameter.watch("hero.whichFoot")
+    parameter.watch("hero.whichFootTimer")
+    parameter.watch("hero.x")
+    parameter.watch("hero.y")
     
-    --importImages()
+    --imageLoader = ImageLoader()
+    --imageLoader:LoadImages()
     
 end
 
-function importImages()
-    --copy images from Dropbox into this Project
-    for var=15,23,1 do
-        myimage = readImage("Dropbox:gyrobot1-a")
-        saveImage("Project:gyrobot"..var.."-a",myimage)
-        myimage = readImage("Dropbox:gyrobot"..var.."-b")
-        saveImage("Project:gyrobot"..var.."-b",myimage)
-    end
-end
+
 
 
 function draw()

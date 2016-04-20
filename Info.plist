@@ -10,6 +10,7 @@
 		<string>Bullet</string>
 		<string>Hero</string>
 		<string>Joystick</string>
+		<string>ImageLoader</string>
 	</array>
 	<key>Description</key>
 	<string>No description available</string>
