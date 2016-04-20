@@ -5,8 +5,8 @@ function Bullet:init(startX,startY,deltaX,deltaY)
     self.x = startX
     self.y = startY
     self.bSpeed = 20
-    self.dx = deltaX * self.bSpeed
-    self.dy = deltaY * self.bSpeed
+    self.dx = shootStick.vector[1] * self.bSpeed
+    self.dy = shootStick.vector[2] * self.bSpeed
     self.bulletSize = 5
 end
 

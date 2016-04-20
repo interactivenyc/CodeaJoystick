@@ -9,11 +9,24 @@ function setup()
     moveStick = Joystick("move")
     shootStick = Joystick("shoot")
     
-    parameter.watch("moveStick.dx")
-    parameter.watch("moveStick.dy")
     parameter.watch("moveStick.angle")
+    parameter.watch("hero.imageIndex")
+    parameter.watch("hero.imageName")
+    
+    --importImages()
     
 end
+
+function importImages()
+    --copy images from Dropbox into this Project
+    for var=15,23,1 do
+        myimage = readImage("Dropbox:gyrobot1-a")
+        saveImage("Project:gyrobot"..var.."-a",myimage)
+        myimage = readImage("Dropbox:gyrobot"..var.."-b")
+        saveImage("Project:gyrobot"..var.."-b",myimage)
+    end
+end
+
 
 function draw()
     background(40, 40, 50)
