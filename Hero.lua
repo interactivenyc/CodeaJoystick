@@ -61,3 +61,4 @@ function Hero:log(msg)
     end
     
 end
+

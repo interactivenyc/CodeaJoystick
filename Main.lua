@@ -17,8 +17,9 @@ function setup()
     parameter.watch("hero.x")
     parameter.watch("hero.y")
     
-    --imageLoader = ImageLoader()
-    --imageLoader:LoadImages()
+    -- TO DOWNLOAD IMAGES FROM MY SERVER INTO THIS PROJECT, 
+    --UNCOMMENT THIS LINE AND RUN THIS FUNCTION JUST ONCE
+    --initImageLoader()
     
 end
 
@@ -70,4 +71,8 @@ function touched(touch)
         end
     end
     
+end
+
+function log(msg)
+    print("[Main] "..msg)
 end

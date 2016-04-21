@@ -20,3 +20,4 @@ end
 function Bullet:touched(touch)
     -- Codea does not automatically call this method
 end
+

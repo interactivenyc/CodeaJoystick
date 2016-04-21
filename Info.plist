@@ -7,11 +7,13 @@
 	<key>Buffer Order</key>
 	<array>
 		<string>Main</string>
+		<string>ImageLoader</string>
 		<string>Bullet</string>
 		<string>Hero</string>
 		<string>Joystick</string>
-		<string>ImageLoader</string>
 	</array>
+	<key>Created</key>
+	<string>2016-04-20 20:47:08 +0000</string>
 	<key>Description</key>
 	<string>No description available</string>
 </dict>
